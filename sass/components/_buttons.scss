@@ -1,0 +1,28 @@
+.btn__transparent {
+    border: none;
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 2px solid #fff;
+
+    transition: all .3s;
+
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    a, a:visited, a:active {
+        color: #fff;
+    }
+
+
+
+}
+
+.btn__transparent:hover {
+    background-color: #fff;
+
+    a {
+        color: $color-primary;
+    }
+}

@@ -11,17 +11,21 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem 1rem;
+        padding: 1rem .8rem;
     }
 
     .nav-logo {
         height: auto;
         width: auto;
-        max-width: 180px;
+        max-width: 170px;
     }
 
+    /* Mobile Menu Styles (hidden by default) */
     .mobile-menu-icon {
-        display: none;
+        display: none; // Hide mobile menu icon by default
+        color: #000; // Set icon color to white
+        font-size: 2rem; // Font size for the mobile menu icon
+        cursor: pointer; // Pointer cursor to indicate clickability
     }
 
     .nav-menu {
@@ -56,4 +60,42 @@
         }
 
     }
+}
+
+
+/* Responsive Styles for Mobile Devices */
+@media (max-width: 768px) {
+
+    .header {
+
+        ul.nav-menu {
+            display: none; // Hide menu items by default on mobile
+            flex-direction: column; // Stack menu items vertically
+            justify-content: center; // Center items vertically
+            align-items: center; // Center items horizontally
+            width: 100%; // Full width
+            background-color: $color-secondary; // Background color for mobile menu
+            position: absolute; // Absolute positioning relative to parent
+            left: 0; // Align to the left
+            top: 100%; // Position below the navbar
+            padding: 1rem 0; // Padding inside mobile menu
+        }
+    
+        ul.nav-menu.active {
+            display: flex; // Show menu items when active
+        }
+    
+        ul.nav-menu li {
+            margin: 0 auto; // Center menu items horizontally
+            text-align: center; // Center text inside menu items
+            padding: .5rem 0; // Padding inside menu items
+            width: 100%; // Full width for menu items
+        }
+    
+        .mobile-menu-icon {
+            display: block; // Show mobile menu icon on mobile
+        }
+
+    }
+
 }

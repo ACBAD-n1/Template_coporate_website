@@ -1,63 +1,73 @@
 .hero {
+    /* Make the hero section span the full width of the grid */
     grid-column: full-start / full-end;
+
+    /* Set the background color and background image for the hero section */
     background-color: #000;
     background-image: url(/img/hero.jpg);
     background-size: cover;
-    height: 100vh;
+    height: 100vh; /* Set the height of the hero section to fill the full viewport height */
 
+    /* Flexbox properties to center content vertically and horizontally */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
+    /* Overlay a semi-transparent dark layer over the background image */
     &::before {
-        content: "";
+        content: ""; /* Create an empty element before the hero section */
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #00000095;
-        z-index: 1;
+        width: 100%; /* Cover the full width of the section */
+        height: 100%; /* Cover the full height of the section */
+        background-color: #00000095; /* Semi-transparent black overlay */
+        z-index: 1; /* Set the stacking order below the content */
     }
 
     &__content {
+        /* Ensure the text content appears above the overlay */
         color: #fff;
         z-index: 2;
-        text-align: center;
+        text-align: center; /* Center the text */
 
         &-title {
-            font-size: 1.5rem;
+            font-size: 1.5rem; /* Set the font size for the title */
         }
 
         &-text {
-            padding: 2rem;
+            padding: 2rem; /* Add padding around the text content */
         }
 
+        /* Style for buttons within the hero content */
         button {
-            border: none;
-            background: none;
+            border: none; /* Remove default button border */
+            background: none; /* Remove default button background */
         }
 
-        &-button{
+        /* Styling for the button inside the hero content */
+        &-button {
             a {
-                text-decoration: none;
-                color: #fff;
-                padding: 1rem 2rem;
-                border: 2px solid $color-primary;
+                /* Style the anchor tag inside the button */
+                text-decoration: none; /* Remove underline */
+                color: #fff; /* Set the text color to white */
+                padding: 1rem 2rem; /* Add padding inside the button */
+                border: 2px solid $color-primary; /* Add a border with the primary color */
 
+                /* Add transition for hover effects */
                 transition: all .3s;
             }
 
+            /* Preserve the white color for visited and active states */
             a:active, a:visited {
                 color: #fff;
             }
-        }
 
-        &-button {
+            /* Hover effect for the anchor button */
             a:hover {
-                background-color: $color-primary;
-                transform: scale(1.2);
+                background-color: $color-primary; /* Change background color on hover */
+                transform: scale(1.2); /* Scale up the button slightly on hover */
             }
         }
     }
@@ -65,311 +75,371 @@
 
 
 .about {
+    /* Make the section span the full width of the grid */
     grid-column: full-start / full-end;
+
+    /* Set background color, remove padding, and ensure full width */
     background-color: #fff;
     padding: 0;
     width: 100%;
+
+    /* Flexbox properties to center content vertically and horizontally */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-
-
     &__content {
+        /* Center the text and set padding around the content */
         text-align: center;
         padding: 5rem 0;
-        width: 60%;
+        width: 60%; /* Limit the width of the content */
 
         h2 {
+            /* Add vertical padding to the heading */
             padding: 2rem 0;
         }
     }
 
     &__card {
+        /* Use CSS Grid to layout the cards in a 5-column grid */
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        padding: 2rem 0 5rem 0;
-        width: 100%;
+        grid-template-columns: repeat(5, 1fr); /* Create 5 equal columns */
+        padding: 2rem 0 5rem 0; /* Add padding around the card container */
+        width: 100%; /* Ensure full width of the container */
 
+        /* Style for individual cards with a pointer cursor and transition effects */
         &-1, &-2, &-3, &-4, &-5 {
-            cursor: pointer;
-            transition: all .3s;
+            cursor: pointer; /* Change cursor to pointer on hover */
+            transition: all .3s; /* Smooth transition for hover effects */
 
             img {
-                height: 15rem;
-                width: 100%;
-                object-fit: cover;
+                /* Set the size and fit of images within the cards */
+                height: 15rem; /* Fixed height for images */
+                width: 100%; /* Full width of the card */
+                object-fit: cover; /* Cover the area while preserving aspect ratio */
             }
 
             hr {
-                width: 60%;
-                color: #c3c3c3;
-                margin: 1rem 0;
+                /* Style horizontal rules inside cards */
+                width: 60%; /* Set width to 60% of the card */
+                color: #c3c3c3; /* Light gray color for the rule */
+                margin: 1rem 0; /* Margin above and below the rule */
             }
         }
 
-        &-1 {
-            grid-column: 1 / 2;
+        /* Define grid column positions for each card */
+        &-1 { grid-column: 1 / 2; }
+        &-2 { grid-column: 2 / 3; }
+        &-3 { grid-column: 3 / 4; }
+        &-4 { grid-column: 4 / 5; }
+        &-5 { grid-column: 5 / 6; }
 
-            &--title {
-                margin-left: 2rem;
-            }
-        }
-
-        &-2 {
-            grid-column: 2 / 3;
-
-        }
-
-        &-3 {
-            grid-column: 3 / 4;
-
-        }
-
-        &-4 {
-            grid-column: 4 / 5;
-
-        }
-
-        &-5 {
-            grid-column: 5 / 6;
-
-        }
-
+        /* Apply hover effects to scale up the card */
         &-1:hover, &-2:hover, &-3:hover, &-4:hover, &-5:hover {
-            transform: scale(1.2);
+            transform: scale(1.2); /* Scale up the card on hover */
         }
 
+        /* Create an overlay effect on hover with a background color */
         &-1:hover::after, &-2:hover::after, &-3:hover::after, &-4:hover::after, &-5:hover::after {
-            content: "";
+            content: ""; /* Create an empty pseudo-element */
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            transform: scale(1.1);
+            width: 100%; /* Cover the full width of the card */
+            height: 100%; /* Cover the full height of the card */
+            transform: scale(1.1); /* Slightly scale the overlay */
         }
 
-        &-1:hover::after {   
-            background-color: #061a7580;
-        }
-
-        &-2:hover::after {   
-            background-color: #dad8d878;
-        }
-
-        &-3:hover::after {   
-            background-color: #061a7580;
-        }
-
-        &-4:hover::after {   
-            background-color: #dad8d878;
-        }
-
-        &-5:hover::after {   
-            background-color: #061a7580;
-        }
-        
+        /* Set specific background colors for each card's hover effect */
+        &-1:hover::after { background-color: #061a7580; }
+        &-2:hover::after { background-color: #dad8d878; }
+        &-3:hover::after { background-color: #061a7580; }
+        &-4:hover::after { background-color: #dad8d878; }
+        &-5:hover::after { background-color: #061a7580; }
     }
-   
 }
 
 
-.services {
+
+.home-services {
+    /* Span the full width of the grid */
     grid-column: full-start / full-end;
+
+    /* Set background color and text color */
     background-color: $color-primary;
     color: #fff;
 
+    /* Use CSS Grid to layout the section */
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, 1fr); /* Create 5 equal columns */
 
     &__items {
+        /* Span the first 4 columns of the grid */
         grid-column: 1 / 5;
-        padding: 5rem 4rem;
+        padding: 5rem 4rem; /* Add padding around the items */
         display: grid;
-        column-gap: 5rem;
-        grid-template-columns: repeat(3, 1fr);
+        column-gap: 5rem; /* Gap between columns */
+        grid-template-columns: repeat(3, 1fr); /* Create 3 equal columns */
 
         &-title {
+            /* Span all columns */
             grid-column: 1 / -1;
 
             h2 {
+                /* Font size for the title */
                 font-size: 2.2rem;
             }
         }
 
         &-1, &-2, &-3 {
+            /* Padding and transition effects for each item */
             padding: 5rem 0;
             cursor: pointer;
-            transition: all .3s;
+            transition: all .3s; /* Smooth transition for hover effects */
 
             span i {
+                /* Style the icon */
                 font-size: 3rem;
-                transition: all .3s;
+                transition: all .3s; /* Smooth transition for hover effects */
                 cursor: pointer;
             }
 
             span i:hover {
+                /* Style for icon on hover */
                 font-size: 4rem;
                 color: $color-primary;
                 background-color: $color-secondary;
                 padding: .5rem;
-                border-radius: 25rem;
+                border-radius: 25rem; /* Round the background */
             }
 
             h3 {
+                /* Margin for the heading */
                 margin: 0 0 1rem 0;
             }
 
             p {
+                /* Color for the paragraph text */
                 color: #c0c0c0;
             }
 
             hr {
+                /* Margin and color for horizontal rule */
                 margin: 2rem 0;
                 color: #fff;
             }
-
         }
 
+        /* Hover effects for items */
         &-1:hover, &-2:hover, &-3:hover {
             background-color: $color-secondary;
-            padding: 1rem;
-            color: #000;
+            padding: 1rem; /* Add padding on hover */
+            color: #000; /* Change text color on hover */
 
             p {
+                /* Change paragraph color on hover */
                 color: #2e2e2e;
             }
         }
-
     }
 
     &__image {
+        /* Span the 5th column of the grid */
         grid-column: 5 / 6;
-        overflow: hidden;
+        overflow: hidden; /* Hide overflow content */
 
         img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            transform: scale(1.8);
-            object-position: top right;
+            /* Style the image */
+            height: 100%; /* Full height of the container */
+            width: 100%; /* Full width of the container */
+            object-fit: cover; /* Cover the area while preserving aspect ratio */
+        }
+    }
+}
+
+/* Responsive Styles for Mobile Devices */
+@media (max-width: 768px) {
+    .home-services {
+        &__items {
+            /* Span all columns and switch to a column layout */
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+        }
+
+        &__image {
+            /* Span all columns */
+            grid-column: 1 / -1;
+        }
+    }
+}
+
+/* Responsive Styles for Smaller Mobile Devices */
+@media (max-width: 480px) {
+    .about__card-1 img, .about__card-2 img, .about__card-3 img, .about__card-4 img, .about__card-5 img {
+        /* Adjust image size for smaller screens */
+        height: 5rem;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .about__card-1--title {
+        /* Remove left margin for the title on smaller screens */
+        margin-left: 0rem;
+
+        h4 {
+            /* Font size for the heading on smaller screens */
+            font-size: .8rem;
         }
     }
 }
 
 
 .case {
+    /* Span the full width of the grid */
     grid-column: full-start / full-end;
-    background-color: #fff;
-    padding: 5rem;
+    background-color: #fff; /* Set background color to white */
+    padding: 5rem; /* Add padding around the section */
 
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack content vertically */
 
     &__title {
-        text-align: center;
-        padding: 0rem 0 5rem 0;
-        font-size: 1.5rem;
+        text-align: center; /* Center-align text */
+        padding: 0rem 0 5rem 0; /* Add padding below the title */
+        font-size: 1.5rem; /* Set font size */
     }
 
     &__card {
+        /* Use CSS Grid for card layout */
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        column-gap: 7rem;
-        row-gap: 2rem;
+        grid-template-columns: repeat(2, 1fr); /* Create 2 equal columns */
+        column-gap: 7rem; /* Gap between columns */
+        row-gap: 2rem; /* Gap between rows */
 
         &-1, &-2, &-3, &-4 {
-            border-top: 2px solid #c3c3c3;
-            padding: 1rem 0;
+            border-top: 2px solid #c3c3c3; /* Top border for each card */
+            padding: 1rem 0; /* Add padding around the content */
 
             h3 {
-                padding: 1rem 0;
+                padding: 1rem 0; /* Add padding around the heading */
             }
 
             p {
-                border: none;
-                color: #777575;
+                border: none; /* Remove any default borders */
+                color: #777575; /* Set text color */
             }
         }
     }
-    
 }
 
+/* Responsive Styles for Mobile Devices */
+@media (max-width: 768px) {
+    .case {
+        &__card {
+            /* Switch to a single-column layout on smaller screens */
+            display: grid;
+            grid-template-columns: 1fr; /* One column layout */
+            column-gap: 7rem; /* Gap between columns (adjust if needed) */
+            row-gap: 2rem; /* Gap between rows */
+
+            &-1, &-2, &-3, &-4 {
+                border-top: 2px solid #c3c3c3; /* Top border remains */
+                padding: 1rem 0; /* Padding remains */
+
+                h3 {
+                    padding: 1rem 0; /* Padding remains */
+                }
+
+                p {
+                    border: none; /* No border */
+                    color: #777575; /* Text color remains */
+                }
+            }
+        }
+    }
+}
 
 .plans {
+    /* Span the full width of the grid */
     grid-column: full-start / full-end;
-    background-color: $color-primary;
-    padding: 6.5rem;
-    color: #fff;
+    background-color: $color-primary; /* Background color using a variable */
+    padding: 6.5rem; /* Add padding around the section */
+    color: #fff; /* Set text color to white */
 
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    text-align: center; /* Center-align text */
 
     h2 {
-        font-size: 2.2rem;
-        padding: 1rem;
+        font-size: 2.2rem; /* Font size for the heading */
+        padding: 1rem; /* Add padding around the heading */
     }
 
     p {
-        color: #c3c3c3;
-        padding: 0 0 1rem 0;
+        color: #c3c3c3; /* Text color for paragraphs */
+        padding: 0 0 1rem 0; /* Padding below the paragraph */
     }
 }
 
-
 .team {
+    /* Span the full width of the grid */
     grid-column: full-start / full-end;
     height: 100vh; /* Full viewport height for the section */
-    position: relative;
-    width: 100%;
-    z-index: -1;
+    position: relative; /* Position relative to the containing block */
+    width: 100%; /* Full width of the container */
+    z-index: -1; /* Place behind other content */
 
     img {
-        object-fit: cover;
-        height: 100vh; /* Ensure the image covers the full section height */
-        width: 100%;
-        position: fixed; /* Sticky positioning */
+        object-fit: cover; /* Ensure the image covers the area */
+        height: 100vh; /* Full height of the viewport */
+        width: 100%; /* Full width of the container */
+        position: fixed; /* Fixed position for sticky effect */
         top: 0; /* Stick to the top of the viewport */
-        z-index: -1;
+        z-index: -1; /* Place behind other content */
     }
 }
 
 .team::after {
-    content: "";
+    content: ""; /* Empty content for pseudo-element */
     top: 0;
     left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: #000000ad;
-    position: absolute;
-    z-index: 1;
+    height: 100%; /* Full height of the container */
+    width: 100%; /* Full width of the container */
+    background-color: #000000ad; /* Dark overlay color */
+    position: absolute; /* Absolute positioning */
+    z-index: 1; /* Place above the background image */
 }
 
-
-
 .contact {
+    /* Span the full width of the grid */
     grid-column: full-start / full-end;
-    background-color: $color-secondary;
-    padding: 5rem;
+    background-color: $color-secondary; /* Background color using a variable */
+    padding: 5rem; /* Add padding around the section */
 
     display: flex;
-    column-gap: 10rem;
+    column-gap: 10rem; /* Gap between columns */
 
     &__description {
-        width: 40%;
+        width: 40%; /* Set width of the description section */
 
         h2 {
-            padding: 1rem 0;
-            border-bottom: 2px solid $color-primary;
+            padding: 1rem 0; /* Add padding around the heading */
+            border-bottom: 2px solid $color-primary; /* Bottom border with primary color */
         }
 
         p {
-            padding: 1rem 0;
+            padding: 1rem 0; /* Add padding around the paragraph */
         }
     }
+}
 
+/* Responsive Styles for Mobile Devices */
+@media (max-width: 480px) {
+    .contact {
+        padding: 5rem 1rem; /* Reduce horizontal padding on smaller screens */
+    }
 }
